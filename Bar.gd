@@ -1,5 +1,7 @@
 extends Spatial
 
+onready var bar_node = $Bar
+
 var note_scn = preload("res://Note.tscn")
 
 var notes_data = [
@@ -21,7 +23,11 @@ var notes_data = [
 	},
 ]
 
-var note_scale = 0.005
+var note_scale
+
+func setup(game):
+	note_scale = game.note_scale
+	bar_node.setup(game)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
