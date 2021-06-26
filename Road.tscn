@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://NotePicker.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Road.gd" type="Script" id=2]
+
+[sub_resource type="PlaneMesh" id=1]
+
+[node name="Road" type="Spatial"]
+script = ExtResource( 2 )
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+transform = Transform( 2, 0, 0, 0, 1, 0, 0, 0, 8, 0, 0, -8 )
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="NotePicker" parent="." instance=ExtResource( 1 )]
+transform = Transform( 0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, -1, 0.02, 0 )
+line = 1
+
+[node name="NotePicker2" parent="." instance=ExtResource( 1 )]
+transform = Transform( 0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0.02, 0 )
+line = 2
+
+[node name="NotePicker3" parent="." instance=ExtResource( 1 )]
+transform = Transform( 0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 1, 0.02, 0 )
+line = 3
+
+[node name="BarsNode" type="Spatial" parent="."]

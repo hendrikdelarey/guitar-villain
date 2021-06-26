@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Road.tscn" type="PackedScene" id=1]
+
+[node name="Game" type="Spatial"]
+
+[node name="Road" parent="." instance=ExtResource( 1 )]
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.694658, 0.71934, 0, -0.71934, 0.694658, 0, 3.681, 1.211 )
+current = true
+
+[node name="CameraDebug" type="Camera" parent="."]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 12.53, -7.917 )
