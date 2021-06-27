@@ -1,0 +1,20 @@
+[gd_resource type="SpatialMaterial" load_steps=3 format=2]
+
+[sub_resource type="Gradient" id=1]
+offsets = PoolRealArray( 0.337931, 0.431034, 0.496552, 0.555172, 0.641379, 0.644828 )
+colors = PoolColorArray( 0, 0, 0, 1, 0.468262, 0.448141, 0.448141, 1, 1, 1, 1, 1, 0.460449, 0.422678, 0.422678, 1, 0.0786134, 0.0721647, 0.0721647, 1, 0, 0, 0, 1 )
+
+[sub_resource type="GradientTexture" id=2]
+gradient = SubResource( 1 )
+
+[resource]
+flags_do_not_receive_shadows = true
+flags_disable_ambient_light = true
+params_blend_mode = 1
+albedo_color = Color( 0, 0, 0, 1 )
+emission_enabled = true
+emission = Color( 1, 0, 0, 1 )
+emission_energy = 8.61
+emission_operator = 1
+emission_on_uv2 = false
+emission_texture = SubResource( 2 )

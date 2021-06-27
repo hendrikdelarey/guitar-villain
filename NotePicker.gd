@@ -1,8 +1,8 @@
 extends Spatial
 
-var green_mat = preload("res://Green_Picker_Mat.tres")
-var red_mat = preload("res://Red_Picker_Mat.tres")
-var yellow_mat = preload("res://Yellow_Picker_Mat.tres")
+var green_mat = preload("res://Note/Green_Picker_Mat.tres")
+var red_mat = preload("res://Note/Red_Picker_Mat.tres")
+var yellow_mat = preload("res://Note/Yellow_Picker_Mat.tres")
 
 export(int, 1, 3) var line
 

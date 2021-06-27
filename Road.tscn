@@ -1,9 +1,14 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://NotePicker.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Road.gd" type="Script" id=2]
 
 [sub_resource type="PlaneMesh" id=1]
+
+[sub_resource type="SpatialMaterial" id=2]
+distance_fade_mode = 1
+distance_fade_min_distance = 0.0
+distance_fade_max_distance = 34.67
 
 [node name="Road" type="Spatial"]
 script = ExtResource( 2 )
@@ -11,7 +16,7 @@ script = ExtResource( 2 )
 [node name="MeshInstance" type="MeshInstance" parent="."]
 transform = Transform( 2, 0, 0, 0, 1, 0, 0, 0, 8, 0, 0, -8 )
 mesh = SubResource( 1 )
-material/0 = null
+material/0 = SubResource( 2 )
 
 [node name="NotePicker" parent="." instance=ExtResource( 1 )]
 transform = Transform( 0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, -1, 0.02, 0 )

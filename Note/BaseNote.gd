@@ -1,23 +1,31 @@
 extends Spatial
 
-var green_mat = preload("res://Green_Note_Mat.tres")
-var red_mat = preload("res://Red_Note_Mat.tres")
-var yellow_mat = preload("res://Yellow_Note_Mat.tres")
+var green_mat = preload("res://Note/Green_Note_Mat.tres")
+var red_mat = preload("res://Note/Red_Note_Mat.tres")
+var yellow_mat = preload("res://Note/Yellow_Note_Mat.tres")
 
 export(int, 1, 3) var line
 var position = 0
-
-var is_pressed = false
+var speed
+var length
+var length_scale
 var is_colliding = false
 var is_collected = false
 var picker
 
 func _ready():
+	_on_ready()
+
+func _on_ready():
 	set_material()
 	set_position()
+	add_listeners()
 
 func _process(delta):
-	collect()
+	_on_process(delta)
+	
+func _on_process(delta):
+	pass
 
 func set_material():
 	match line:
@@ -38,14 +46,17 @@ func set_position():
 		3:
 			x = 1
 	
-	self.translation = Vector3(x, 0, -position)
+	self.translation = Vector3(x, 0, -position*length_scale)
 
 func collect():
-	if not is_collected and is_colliding and picker:
-		if picker.is_collecting:
-			is_collected = true
-			picker.is_collecting = false
-			note_hit()
+	is_collected = true
+	picker.is_collecting = false
+	hide()
+
+func add_listeners():
+	$Area.add_to_group("note")
+	$Area.connect("area_entered", self, "_on_area_entered")
+	$Area.connect("area_exited", self, "_on_area_exited")
 
 func _on_area_entered(area):
 	if area.is_in_group("picker"):

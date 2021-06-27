@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://Note.gd" type="Script" id=1]
-[ext_resource path="res://Green_Note_Mat.tres" type="Material" id=2]
+[ext_resource path="res://Note/ShortNote.gd" type="Script" id=1]
+[ext_resource path="res://Note/Green_Note_Mat.tres" type="Material" id=2]
 
 [sub_resource type="CubeMesh" id=1]
 
@@ -16,13 +16,8 @@ material_override = ExtResource( 2 )
 mesh = SubResource( 1 )
 material/0 = null
 
-[node name="Area" type="Area" parent="." groups=[
-"note",
-]]
+[node name="Area" type="Area" parent="."]
 
 [node name="CollisionShape" type="CollisionShape" parent="Area"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0 )
 shape = SubResource( 2 )
-
-[connection signal="area_entered" from="Area" to="." method="_on_area_entered"]
-[connection signal="area_exited" from="Area" to="." method="_on_area_exited"]

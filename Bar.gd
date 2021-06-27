@@ -2,28 +2,12 @@ extends Spatial
 
 onready var bar_node = $Bar
 
-var note_scn = preload("res://Note.tscn")
-
-var notes_data = [
-	{
-		"pos": 0,
-		"len": 100
-	},
-	{
-		"pos": 400, # 400 * 0.005 = 2 units in Godot
-		"len": 100
-	},
-	{
-		"pos": 800, # 800 * 0.005 = 4 units in Godot
-		"len": 100
-	},
-	{
-		"pos": 1200, # 800 * 0.005 = 6 units in Godot
-		"len": 100
-	},
-]
+var short_note_scn = preload("res://Note/ShortNote.tscn")
+var long_note_scn = preload("res://Note/LongNote.tscn")
 
 var note_scale
+var bar_data
+var speed
 
 func setup(game):
 	note_scale = game.note_scale
@@ -35,10 +19,23 @@ func _ready():
 
 
 func add_notes():
-	for n in notes_data:
-		var note = note_scn.instance()
-		randomize()
-		note.line = randi()%3 + 1
-		note.position = n.pos*note_scale
-		print_debug("Note added ", note)
-		add_child(note)
+	var line = 1
+	for line_data in bar_data:
+		for note_data in line_data.notes:
+			add_note(line, note_data)
+		line += 1
+
+func add_note(line, data):
+	var note_scn
+	if int(data.len) >= 400:
+		note_scn = long_note_scn
+	else:
+		note_scn = short_note_scn
+		
+	var note = note_scn.instance()
+	note.line = line
+	note.position = int(data.pos)
+	note.length = int(data.len)
+	note.length_scale = note_scale
+	note.speed = speed
+	add_child(note)
